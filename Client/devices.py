@@ -48,8 +48,8 @@ class AM2320:
         humd = self.humidity()
 
         state = {
-            "temperature": temp,
-            "humdidity": humd
+            "t": temp,
+            "h": humd
         }
         print(state)
         if self.set_client_state is not None:
