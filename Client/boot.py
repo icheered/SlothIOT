@@ -49,6 +49,8 @@ def main():
     from config import GITHUB_USER, GITHUB_REPO, GITHUB_DIR, GITHUB_BRANCH
     OTA = senko.Senko(user=GITHUB_USER, repo=GITHUB_REPO, working_dir=GITHUB_DIR, branch=GITHUB_BRANCH, files=["main.py", "boot.py", "devices.py"])
 
+    print("Checking for update")
+
     if OTA.update():
         print("Updated to the latest version! Rebooting...")
         machine.reset()
