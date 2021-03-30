@@ -52,7 +52,10 @@ def main():
     if OTA.update():
         print("Updated to the latest version! Rebooting...")
         machine.reset()
+    else:
+        print("No update")
 
 
 if __name__ == "__main__":
+    print("Booting")
     main()

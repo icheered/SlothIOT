@@ -11,6 +11,7 @@ led_pin = 13
 GITHUB_USER = "icheered"
 GITHUB_REPO = "SlothIOT"
 GITHUB_DIR = "Client"
+GITHUB_BRANCH = "main"
 
 # Wifi SSID and Password
 wifi_ssid = ''
