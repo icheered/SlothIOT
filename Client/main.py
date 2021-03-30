@@ -2,7 +2,6 @@ import utime as time
 time.sleep(3)
 
 print("Starting")
-print("Testing message")
 
 from client import Client
 
