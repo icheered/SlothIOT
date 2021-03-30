@@ -46,8 +46,8 @@ def main():
     connect_wlan(SSID, PASSWORD)
 
     import senko
-    from config import GITHUB_URL
-    OTA = senko.Senko(url=GITHUB_URL, files=["boot.py", "devices.py", "main.py"])
+    from config import GITHUB_USER, GITHUB_REPO, GITHUB_DIR
+    OTA = senko.Senko(user=GITHUB_USER, repo=GITHUB_REPO, working_dir=GITHUB_DIR, files=["boot.py", "devices.py", "main.py"])
 
     if OTA.update():
         print("Updated to the latest version! Rebooting...")
