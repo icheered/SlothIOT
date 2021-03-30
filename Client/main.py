@@ -29,7 +29,7 @@ loop = asyncio.get_event_loop()
 device = None
 if client_type == "switch":
     device = Switch()
-if client_type = "am2320":
+if client_type == "am2320":
     device = AM2320()
 
 client = Client(loop=loop, 
@@ -41,7 +41,7 @@ client = Client(loop=loop,
                 client_pass=client_pass,
                 device=device)
 
-if client_type = "am2320":
+if client_type == "am2320":
     device.set_client_state = client.set_state
 
 task = asyncio.Task(client.connect_wifi())

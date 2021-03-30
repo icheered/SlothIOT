@@ -40,6 +40,7 @@ class AM2320:
             "temperature": temp,
             "humdidity": humd
         }
+        print(state)
         if self.set_client_state is not None:
             self.set_client_state(state)
         return
