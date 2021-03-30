@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "slothiot"
+version = "0.1.0"
+description = ""
+authors = ["ICheered <tjeerd992@gmail.com>"]
+license = "GPL3"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+esptool = "^3.0"
+adafruit-ampy = "^1.1.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

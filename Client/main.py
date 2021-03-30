@@ -7,7 +7,7 @@ from collections import namedtuple
 import uwebsockets.client
 import urequests as requests
 import ujson as json
-from config import wifi_ssid, wifi_pass, client_type, client_id, device_pass, server_address, auth_port, auth_path, pubsub_port, pubsub_path
+from config import wifi_ssid, wifi_pass, client_type, client_id, client_pass, server_address, auth_port, auth_path, pubsub_port, pubsub_path
 from devices import Switch
 
 # # Wifi SSID and Password
@@ -36,10 +36,10 @@ auth_address = "http://"+server_address+":"+auth_port+auth_path
 
 ##################################################
 
-print("Config: ")
+print("Config")
 print("Client type: "+ client_type)
 print("Client ID: "+ client_id)
-print("Device pass: "+ device_pass)
+print("Client pass: "+ client_pass)
 print("Wifi SSID: "+ wifi_ssid)
 print("Wifi Pass:" + wifi_pass)
 print("PubSub Addr: " + pubsub_address)

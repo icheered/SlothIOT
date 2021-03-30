@@ -7,7 +7,6 @@ import upip
 
 from config import wifi_ssid, wifi_pass
 
-
 def connect_wlan(ssid, password):
     """Connects build-in WLAN interface to the network.
     Args:
@@ -45,9 +44,6 @@ def main():
     PASSWORD = wifi_pass
 
     connect_wlan(SSID, PASSWORD)
-
-    # Install Senko from PyPi
-    upip.install("micropython-senko")
 
     import senko
     from config import GITHUB_URL

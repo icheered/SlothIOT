@@ -1,7 +1,7 @@
 # Client Parameters
 client_type = "switch"
 client_id = ""
-device_pass = ""
+client_pass = ""
 
 # Device parameters
 relay_pin = 12
