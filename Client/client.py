@@ -156,7 +156,6 @@ class Client:
 
     async def send_state(self):
         print("Sending state")
-        clid = "eec2d72c9a7f42ddab19e1ae5cad5150"
         message = {
             "type": "topic",
             "payload": {
@@ -167,6 +166,9 @@ class Client:
             }
         }
         await self.send_message(message)
+    
+    def set_state(self, state):
+        self.state = state
 
     async def update_state(self):
         print("Updating state")

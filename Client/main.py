@@ -2,7 +2,7 @@ import utime as time
 time.sleep(3)
 
 print("Starting")
-from client import Client
+from client import Client, AM2320
 
 import asyncio 
 from config import wifi_ssid, wifi_pass, client_type, client_id, client_pass, server_address, auth_port, auth_path, pubsub_port, pubsub_path
@@ -29,6 +29,8 @@ loop = asyncio.get_event_loop()
 device = None
 if client_type == "switch":
     device = Switch()
+if client_type = "am2320":
+    device = AM2320()
 
 client = Client(loop=loop, 
                 wifi_ssid=wifi_ssid,
@@ -38,6 +40,9 @@ client = Client(loop=loop,
                 client_id=client_id, 
                 client_pass=client_pass,
                 device=device)
+
+if client_type = "am2320":
+    device.set_client_state = client.set_state
 
 task = asyncio.Task(client.connect_wifi())
 task = asyncio.Task(client.get_session_token())

@@ -1,5 +1,11 @@
 import machine
-from config import relay_pin, led_pin
+import am2320
+from machine import I2C, Pin
+
+from config import relay_pin, led_pin, scl_pin, sda_pin
+
+
+
 
 class Switch:
     def __init__(self):
@@ -17,4 +23,23 @@ class Switch:
             print("Turning on")
             self.relay.on()
             self.led.off()
+        return
+
+class AM2320:
+    def __init__(self):
+        self.set_client_state = None
+        i2c = I2C(scl=Pin(scl_pin), sda=Pin(sda_pin))
+        self.sensor = am2320.AM2320(self.i2c)
+    
+    def update_state(self, state):
+        self.sensor.measure()
+        temp = self.sensor.temperature()
+        humd = self.sensor.humidity()
+
+        state = {
+            "temperature": temp,
+            "humdidity": humd
+        }
+        if self.set_client_state is not None:
+            self.set_client_state(state)
         return
