@@ -2,9 +2,6 @@ import utime as time
 time.sleep(3)
 
 print("Starting")
-
-print("Final test, another message")
-print("Maybe some additional changes will do the trick?")
 from client import Client
 
 import asyncio 
