@@ -2,7 +2,7 @@ import utime as time
 time.sleep(3)
 
 print("Starting")
-
+print("New message")
 from client import Client
 
 import asyncio 
