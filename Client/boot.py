@@ -47,7 +47,7 @@ def main():
 
     import senko
     from config import GITHUB_URL
-    OTA = senko.Senko(url=GITHUB_URL, files=["boot.py", "devices,py", "main.py"])
+    OTA = senko.Senko(url=GITHUB_URL, files=["boot.py", "devices.py", "main.py"])
 
     if OTA.update():
         print("Updated to the latest version! Rebooting...")

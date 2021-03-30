@@ -12,9 +12,9 @@ class Switch:
         if state == 0:
             print("Turning off")
             self.relay.off()
-            #self.led.on()
+            self.led.on()
         elif state == 1:
             print("Turning on")
             self.relay.on()
-            #self.led.off()
+            self.led.off()
         return
