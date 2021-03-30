@@ -47,8 +47,10 @@ class Senko:
         changes = []
 
         for file in self.files:
+            print("Checking" + self.url + "/" + file)
             latest_version = self._get_file(self.url + "/" + file)
             if latest_version is None:
+                print("Latest version was none")
                 continue
 
             try:
