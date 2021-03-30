@@ -1,0 +1,23 @@
+# Client Parameters
+client_type = "switch"
+client_id = ""
+device_pass = ""
+
+# Device parameters
+relay_pin = 12
+led_pin = 13
+
+# Wifi SSID and Password
+wifi_ssid = ''
+wifi_pass = ''
+
+# IP address or web address of the server
+server_address = ""
+
+# Auth API parameters
+auth_port = "4111"
+auth_path = "/api/auth/auth/"
+
+# PubSub WS parameters
+pubsub_port = "4112"
+pubsub_path = "/ws/pubsub/"
