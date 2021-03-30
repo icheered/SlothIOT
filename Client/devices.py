@@ -11,7 +11,7 @@ class Switch:
         print("Updating state")
         if state == 0:
             print("Turning off")
-            self.relay.off()
+            self.relay.on()
             self.led.off()
         elif state == 1:
             print("Turning on")
