@@ -2,11 +2,11 @@ import utime as time
 time.sleep(3)
 
 print("Starting")
-from client import Client, AM2320
+from client import Client
 
 import asyncio 
 from config import wifi_ssid, wifi_pass, client_type, client_id, client_pass, server_address, auth_port, auth_path, pubsub_port, pubsub_path
-from devices import Switch
+from devices import Switch, AM2320
 
 
 pubsub_address = "ws://"+server_address+":"+pubsub_port+pubsub_path
