@@ -21,7 +21,6 @@ class Client:
         self.wifi_connected = False
         self.ws_connected = False
         self.ws = None
-        self.state = 0
 
         self.device = device
 
@@ -141,8 +140,8 @@ class Client:
                             elif "command" in msg["payload"] and msg["payload"]["command"] == "set":
                                 if "data" in msg["payload"]:
                                     value = float(msg["payload"]["data"])
-                                    self.state = value
-                                    await self.update_state()
+                                    self.device.set_state(state=value)
+                                    await self.send_state()
                                 else:
                                     print("Should set state but didn't get state")
             except Exception as e:
@@ -156,25 +155,17 @@ class Client:
 
     async def send_state(self):
         print("Sending state")
+        print(self.client_id)
         message = {
             "type": "topic",
             "payload": {
                 "action": "pub",
                 "name": "state",
-                "data": self.state,
-                "client_id": ""
+                "data": self.device.get_state(),
+                "client_id": str(self.client_id),
             }
         }
-        await self.send_message(message)
-    
-    def set_state(self, state):
-        self.state = state
-
-    async def update_state(self):
-        print("Updating state")
-        self.device.update_state(self.state)
-        await self.send_state()
-
+        await self.send_message(str(message))
 
     async def send_heartbeat(self):
         msg = {
@@ -196,7 +187,10 @@ class Client:
         await self.wait_for_ws()
         print("Sending...")
         print(message)
-        msg = str(message)
+        if type(message) != str:
+            msg = str(message)
+        else:
+            msg = message
         try:
             await self.ws.send(msg)
         except Exception as e:

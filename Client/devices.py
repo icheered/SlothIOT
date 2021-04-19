@@ -5,26 +5,30 @@ from machine import I2C, Pin
 
 from config import relay_pin, led_pin, scl_pin, sda_pin
 
-
-
-
 class Switch:
     def __init__(self):
         self.relay = machine.Pin(relay_pin, machine.Pin.OUT)
         self.led = machine.Pin(led_pin, machine.Pin.OUT)
+        self.state = None
     
-    def update_state(self, state):
+    def set_state(self, state):
         # For some reason led 'on()' is off, and 'off()' is on
+        self.state = state
         print("Updating state")
-        if state == 0:
+        if self.state == 0:
             print("Turning off")
             self.relay.off()
             self.led.on()
-        elif state == 1:
+        elif self.state == 1:
             print("Turning on")
             self.relay.on()
             self.led.off()
         return
+    
+    def get_state(self):
+        print("Getting state")
+        return self.state
+
 
 
 
@@ -35,26 +39,30 @@ class AM2320:
     MIT License
     Copyright (c) 2016 Mike Causer
     """
-
     def __init__(self, i2c=None, address=0x5c):
         self.set_client_state = None
         self.i2c = I2C(scl=Pin(scl_pin), sda=Pin(sda_pin))
         self.address = address
         self.buf = bytearray(8)
+
+        self.state = None
     
-    def update_state(self, state):
+    def set_state(self, state):
         self.measure()
         temp = self.temperature()
         humd = self.humidity()
 
-        state = {
+        measured_state = {
             "t": temp,
             "h": humd
         }
         print(state)
-        if self.set_client_state is not None:
-            self.set_client_state(state)
+        self.state = measured_state
         return
+    
+    def get_state(self):
+        print("Getting state")
+        return self.state
 
     def measure(self):
         buf = self.buf
